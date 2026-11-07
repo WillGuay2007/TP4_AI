@@ -1,0 +1,1 @@
+from samva.data import load_data
