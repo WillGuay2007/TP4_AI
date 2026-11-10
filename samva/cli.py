@@ -5,7 +5,7 @@ import numpy
 import tensorflow as tf
 from pathlib import Path
 
-DATASET_PATH = r"C:\Users\willb\Downloads\gtsrb"
+DATASET_PATH = r"C:\Users\Willb\Downloads\gtsrb"
 MODEL_SAVE_PATH = "model.keras"
 TEST_SIZE = 0.2
 EPOCHS = 10
@@ -20,5 +20,8 @@ def main():
     model = get_model()
     model.summary()
     model.fit(x_train, y_train, epochs=EPOCHS)
-    model.evaluate(x_test, y_test, verbose=2)
+    test_loss, test_accuracy = model.evaluate(x_test, y_test, verbose=2)
+    print("Test loss:", test_loss)
+    print("Test accuracy:", test_accuracy)
+
     model.save(MODEL_SAVE_PATH)
