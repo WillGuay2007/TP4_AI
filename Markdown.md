@@ -1,18 +1,25 @@
 Résumé de mon premier test:
-Flatten + dense avec train 91.6% et test 89.9%.
+Flatten + dense avec train 91.6% et test 89.1%.
 
 Je m'attendais pas à un résultat aussi bon pour être honnête parce que d'un sens, on traite les pixels directement sans aucun filtre.
 De base c'étais juste pour tester le modèle et voir si ça marche, pas grand chose à dire de plus.
 
 Voici mon deuxième et dernier test:
+
 ![Test 1](Images/Test1.png)
 
-Ici, je remarque que les curves s'arrêtent vers 98% donc on peut dire que mes layers ne sont pas parfaits (saturent à un point). Ils montent mais ça ressemble beaucoup à la courbe logarithmique. (commence vite, finit lentement)
+Ici, je remarque que les curves saturent vers 98% donc on peut dire que mes layers ne sont pas parfaits (saturent à un point). Ils montent mais ça ressemble beaucoup à la courbe logarithmique. (commence vite, finit lentement)
+
+
+Peu d'overfitting parce que la validation et le training se ressemblent fortement:
+La seule chose que j'ai remarqué c'est que le loss de la validation ne diminue pas parfaitement. Parfois, il flucue.
+![Validation](Images/Validation.png)
 
 Il a bien appris.
 Il y'a un peu d'overfitting, mais presque pas (environ 1.5% entre l'apprentissage et les tests.), donc je suis pas trop concerné
 
 Mon modèle:
+
 ![Mon modèle](Images/ModelImage.png)
 
 Voici mon intuition derrière les layers:
@@ -31,7 +38,7 @@ MaxPool2D:
 Je veux qu'il compresse les données et garde les plus fortes puisque elles ont déja été interprétées. Ça fait moins d'inputs et ça augmente la vitesse.
 2x2 pour diminuer la taille de x2. Si j'avais pas fait Conv2D, il perdrait des informations cruciales mais elles ont déja été traitées donc c'est ok.
 32 filtres. Personnelement, le nombre 32 vient du fait que c'est un exposant de deux et je trouve que c'est "clean".
-De plus, 32 filtres est parfait selon moi parce que ça permet de repérer plusieurs patterns.
+De plus, 32 filtres est parfait selon moi parce que ça permet de repérer plusieurs patterns. J'ai pas testé avec d'autres car l'accuracy me convient.
 
 Dropout:
 C'est simple, je veux simplement diminuer les chances d'overfitting. J'ai choisi 0.2 parce que je trouve que c'est juste parfait.
